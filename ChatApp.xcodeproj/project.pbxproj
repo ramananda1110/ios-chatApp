@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7153AC1F29B445F80022E1A9 /* SocketIOManagerDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7153AC1E29B445F80022E1A9 /* SocketIOManagerDefault.swift */; };
+		7153AC2129B4461E0022E1A9 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7153AC2029B4461E0022E1A9 /* SocketIOManager.swift */; };
+		7153AC2329B447430022E1A9 /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7153AC2229B447430022E1A9 /* Managers.swift */; };
 		7155368829A9F9A400FFC677 /* ChatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7155368729A9F9A400FFC677 /* ChatAppApp.swift */; };
 		7155368A29A9F9A400FFC677 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7155368929A9F9A400FFC677 /* Persistence.swift */; };
 		7155368D29A9F9A400FFC677 /* ChatApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7155368B29A9F9A400FFC677 /* ChatApp.xcdatamodeld */; };
@@ -16,6 +19,14 @@
 		7155369F29A9F9A600FFC677 /* ChatAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7155369E29A9F9A600FFC677 /* ChatAppTests.swift */; };
 		715536A929A9F9A600FFC677 /* ChatAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715536A829A9F9A600FFC677 /* ChatAppUITests.swift */; };
 		715536AB29A9F9A600FFC677 /* ChatAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715536AA29A9F9A600FFC677 /* ChatAppUITestsLaunchTests.swift */; };
+		715536B829A9FCD700FFC677 /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715536B729A9FCD700FFC677 /* ChatRow.swift */; };
+		715536BA29A9FF9F00FFC677 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715536B929A9FF9F00FFC677 /* ChatModel.swift */; };
+		715536BC29AA106E00FFC677 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715536BB29AA106E00FFC677 /* DateHelper.swift */; };
+		715536BE29AA1EAF00FFC677 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715536BD29AA1EAF00FFC677 /* ChatViewModel.swift */; };
+		715536C029AA219A00FFC677 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715536BF29AA219A00FFC677 /* ChatView.swift */; };
+		71CBAEFB29AE0C1E002C490F /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 71CBAEFA29AE0C1E002C490F /* SocketIO */; };
+		71CBAEFD29AE1BA5002C490F /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CBAEFC29AE1BA5002C490F /* SocketHelper.swift */; };
+		71CBAEFF29AE1C73002C490F /* AppUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CBAEFE29AE1C72002C490F /* AppUrl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7132732129B58B2E0090B05F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7153AC1E29B445F80022E1A9 /* SocketIOManagerDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManagerDefault.swift; sourceTree = "<group>"; };
+		7153AC2029B4461E0022E1A9 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		7153AC2229B447430022E1A9 /* Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managers.swift; sourceTree = "<group>"; };
 		7155368429A9F9A400FFC677 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7155368729A9F9A400FFC677 /* ChatAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppApp.swift; sourceTree = "<group>"; };
 		7155368929A9F9A400FFC677 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -49,6 +64,13 @@
 		715536A429A9F9A600FFC677 /* ChatAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		715536A829A9F9A600FFC677 /* ChatAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppUITests.swift; sourceTree = "<group>"; };
 		715536AA29A9F9A600FFC677 /* ChatAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		715536B729A9FCD700FFC677 /* ChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
+		715536B929A9FF9F00FFC677 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		715536BB29AA106E00FFC677 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		715536BD29AA1EAF00FFC677 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		715536BF29AA219A00FFC677 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		71CBAEFC29AE1BA5002C490F /* SocketHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
+		71CBAEFE29AE1C72002C490F /* AppUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUrl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CBAEFB29AE0C1E002C490F /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,9 +99,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7153AC1D29B445D50022E1A9 /* socketManager */ = {
+			isa = PBXGroup;
+			children = (
+				7153AC1E29B445F80022E1A9 /* SocketIOManagerDefault.swift */,
+				7153AC2029B4461E0022E1A9 /* SocketIOManager.swift */,
+				7153AC2229B447430022E1A9 /* Managers.swift */,
+			);
+			path = socketManager;
+			sourceTree = "<group>";
+		};
 		7155367B29A9F9A400FFC677 = {
 			isa = PBXGroup;
 			children = (
+				7153AC1D29B445D50022E1A9 /* socketManager */,
 				7155368629A9F9A400FFC677 /* ChatApp */,
 				7155369D29A9F9A600FFC677 /* ChatAppTests */,
 				715536A729A9F9A600FFC677 /* ChatAppUITests */,
@@ -99,13 +133,21 @@
 		7155368629A9F9A400FFC677 /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				7132732129B58B2E0090B05F /* Info.plist */,
 				7155368729A9F9A400FFC677 /* ChatAppApp.swift */,
 				7155368929A9F9A400FFC677 /* Persistence.swift */,
 				7155368E29A9F9A400FFC677 /* ContentView.swift */,
+				715536B929A9FF9F00FFC677 /* ChatModel.swift */,
 				7155369029A9F9A500FFC677 /* Assets.xcassets */,
 				7155369229A9F9A500FFC677 /* ChatApp.entitlements */,
 				7155368B29A9F9A400FFC677 /* ChatApp.xcdatamodeld */,
 				7155369329A9F9A500FFC677 /* Preview Content */,
+				715536B729A9FCD700FFC677 /* ChatRow.swift */,
+				715536BB29AA106E00FFC677 /* DateHelper.swift */,
+				715536BD29AA1EAF00FFC677 /* ChatViewModel.swift */,
+				715536BF29AA219A00FFC677 /* ChatView.swift */,
+				71CBAEFC29AE1BA5002C490F /* SocketHelper.swift */,
+				71CBAEFE29AE1C72002C490F /* AppUrl.swift */,
 			);
 			path = ChatApp;
 			sourceTree = "<group>";
@@ -151,6 +193,9 @@
 			dependencies = (
 			);
 			name = ChatApp;
+			packageProductDependencies = (
+				71CBAEFA29AE0C1E002C490F /* SocketIO */,
+			);
 			productName = ChatApp;
 			productReference = 7155368429A9F9A400FFC677 /* ChatApp.app */;
 			productType = "com.apple.product-type.application";
@@ -223,6 +268,9 @@
 				Base,
 			);
 			mainGroup = 7155367B29A9F9A400FFC677;
+			packageReferences = (
+				71CBAEF929AE0C1E002C490F /* XCRemoteSwiftPackageReference "socket" */,
+			);
 			productRefGroup = 7155368529A9F9A400FFC677 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -265,10 +313,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7153AC1F29B445F80022E1A9 /* SocketIOManagerDefault.swift in Sources */,
 				7155368D29A9F9A400FFC677 /* ChatApp.xcdatamodeld in Sources */,
 				7155368829A9F9A400FFC677 /* ChatAppApp.swift in Sources */,
+				715536BE29AA1EAF00FFC677 /* ChatViewModel.swift in Sources */,
 				7155368F29A9F9A400FFC677 /* ContentView.swift in Sources */,
+				71CBAEFF29AE1C73002C490F /* AppUrl.swift in Sources */,
+				715536C029AA219A00FFC677 /* ChatView.swift in Sources */,
+				715536B829A9FCD700FFC677 /* ChatRow.swift in Sources */,
+				71CBAEFD29AE1BA5002C490F /* SocketHelper.swift in Sources */,
+				7153AC2329B447430022E1A9 /* Managers.swift in Sources */,
+				7153AC2129B4461E0022E1A9 /* SocketIOManager.swift in Sources */,
 				7155368A29A9F9A400FFC677 /* Persistence.swift in Sources */,
+				715536BC29AA106E00FFC677 /* DateHelper.swift in Sources */,
+				715536BA29A9FF9F00FFC677 /* ChatModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +485,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChatApp/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -465,6 +524,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChatApp/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -620,6 +680,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		71CBAEF929AE0C1E002C490F /* XCRemoteSwiftPackageReference "socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift/";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		71CBAEFA29AE0C1E002C490F /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71CBAEF929AE0C1E002C490F /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		7155368B29A9F9A400FFC677 /* ChatApp.xcdatamodeld */ = {

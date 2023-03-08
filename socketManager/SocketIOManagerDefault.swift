@@ -10,6 +10,7 @@ import SocketIO
 
 
 class SocketIOManagerDefault : NSObject, SocketIOManager {
+    
    
     
     
@@ -22,10 +23,13 @@ class SocketIOManagerDefault : NSObject, SocketIOManager {
      
      override init() {
          super.init()
+         
+       
         manager  = SocketManager(socketURL:  URL(string:AppUrl.socketURL)!, config: [.log(true), .forceNew(true), .reconnectAttempts(10), .reconnectWait(6000), .connectParams(["userId" : "+8801738039685", "userToken" : "ecwe-kffR9K0PCe70rvDDo:APA91bG8W6XrWUw_rUi3JbWYtzt9F236oFuOq4nXJBVGHKIVybmoDJKZbYgJ3RO_i-BDY8L6aAzoEzaOX_20diEOENn3SFZCRQOI6tTWw3cAW59FXs3vcrshn1wOIali6dCkPk7duhK0"]), .forceWebsockets(true), .compress])
          
          //manager = SocketManager(socketURL: URL(string: "http://10.17.33.93:3000")!)
          socket = manager.defaultSocket
+         
          
          establishConnection()
      }
@@ -39,7 +43,12 @@ class SocketIOManagerDefault : NSObject, SocketIOManager {
      func closeConnection() {
          socket.disconnect()
      }
-     
+    
+    
+    func getSocketInstance() -> SocketIO.SocketIOClient {
+        return socket
+    }
+    
      func connectToChat(with name: String) {
          socket.emit("connectUser", name)
      }

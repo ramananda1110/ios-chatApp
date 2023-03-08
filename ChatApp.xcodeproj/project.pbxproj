@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7110C8DC29B61DF100D4BBAA /* ChatDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110C8DB29B61DF100D4BBAA /* ChatDataModel.swift */; };
 		7153AC1F29B445F80022E1A9 /* SocketIOManagerDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7153AC1E29B445F80022E1A9 /* SocketIOManagerDefault.swift */; };
 		7153AC2129B4461E0022E1A9 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7153AC2029B4461E0022E1A9 /* SocketIOManager.swift */; };
 		7153AC2329B447430022E1A9 /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7153AC2229B447430022E1A9 /* Managers.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7110C8DB29B61DF100D4BBAA /* ChatDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataModel.swift; sourceTree = "<group>"; };
 		7132732129B58B2E0090B05F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7153AC1E29B445F80022E1A9 /* SocketIOManagerDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManagerDefault.swift; sourceTree = "<group>"; };
 		7153AC2029B4461E0022E1A9 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				715536BF29AA219A00FFC677 /* ChatView.swift */,
 				71CBAEFC29AE1BA5002C490F /* SocketHelper.swift */,
 				71CBAEFE29AE1C72002C490F /* AppUrl.swift */,
+				7110C8DB29B61DF100D4BBAA /* ChatDataModel.swift */,
 			);
 			path = ChatApp;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				7153AC2329B447430022E1A9 /* Managers.swift in Sources */,
 				7153AC2129B4461E0022E1A9 /* SocketIOManager.swift in Sources */,
 				7155368A29A9F9A400FFC677 /* Persistence.swift in Sources */,
+				7110C8DC29B61DF100D4BBAA /* ChatDataModel.swift in Sources */,
 				715536BC29AA106E00FFC677 /* DateHelper.swift in Sources */,
 				715536BA29A9FF9F00FFC677 /* ChatModel.swift in Sources */,
 			);

@@ -14,69 +14,73 @@ class ChatsViewModel: ObservableObject {
     
     private var socketManager = Managers.socketManager
 
-//    let manager = SocketManager(socketURL: URL(string: AppUrl.socketURL)!,  config: [.log(true), .compress], .connectParams(["user_id" : "+8801401155116", "userToken" : ""]))
-//
-    
-  let  manager  = SocketManager(socketURL:  URL(string:AppUrl.socketURL)!, config: [.log(true), .forceNew(true), .reconnectAttempts(10), .reconnectWait(6000), .connectParams(["userId" : "+8801738039685", "userToken" : "ecwe-kffR9K0PCe70rvDDo:APA91bG8W6XrWUw_rUi3JbWYtzt9F236oFuOq4nXJBVGHKIVybmoDJKZbYgJ3RO_i-BDY8L6aAzoEzaOX_20diEOENn3SFZCRQOI6tTWw3cAW59FXs3vcrshn1wOIali6dCkPk7duhK0"]), .forceWebsockets(true), .compress])
-   
-    //let socket = manager.defaultSocket
-    
-    var socket: SocketIOClient!
-        @Published var messageText = ""
-        @Published var messages = [ChatMessage]()
+
+    @Published var messageText = ""
+    @Published var messages = [MessageData]()
 
     
-    func connect() {
-           socket = manager.defaultSocket
-           socket.on("connect") { _, _ in
-               print("Connected")
-           }
-
-           socket.on("get_message") { data, _ in
-               if let messageDict = data[0] as? [String: Any], let message = ChatMessage(dictionary: messageDict) {
-                   DispatchQueue.main.async {
-                       self.messages.append(message)
-                   }
-               }
-           }
-
-           socket.connect()
-       }
-    
+    init(chats: [Chat] = Chat.sampleChat, socketManager: SocketIOManager = Managers.socketManager, messageText: String = "", messages: [MessageData] = [MessageData]()) {
+        self.chats = chats
+        self.socketManager = socketManager
+        self.messageText = messageText
+        self.messages = messages
+        
+      //  getMessage()
+    }
     
     func sendMessage() {
         
-        //socket = manager.defaultSocket
-        // socket.connect()
+        let messageDict: [String: Any] = [
+                        "api_token": "L4KX8hcEmXNTK3vIi1I4fQZR8HGlOTbtgAwCf1UDElsHmj3KyPyqA2ssFn1C",
+                        "room": "orko6-13",
+                        "msg": messageText,
+                        "doctor_id": "13",
+                        "chat_type": "text",
+                        "user_id": "+8801738039685",
+                        "receiver_id": "+8801401155116",
+                        "sender_name": "Stay home",
+                        "sender_image": "/storage/images/profile/Orko-Pro-Dev_2022_11_14_00_50_30-Nov-14th-22-12-50-39.jpg",
+                        "create_at": Date().currentTimeFormat,
+                        "created_date": Date().currentDateFormat,
+                        "is_group": false,
+                        "is_delivered": false,
+                        "is_seen": false
+                    ]
         
-        //guard let  username = message?.isEmpty else {
-        //  return
-        //  }
+        socketManager.getSocketInstance().emit("chat_message", messageDict)
+                    print(messageDict)
         
-        //            let messageDict: [String: Any] = [
-        //                "api_token": "L4KX8hcEmXNTK3vIi1I4fQZR8HGlOTbtgAwCf1UDElsHmj3KyPyqA2ssFn1C",
-        //                "room": "orko6-13",
-        //                "msg": messageText,
-        //                "doctor_id": "13",
-        //                "chat_type": "text",
-        //                "user_id": "+8801738039685",
-        //                "receiver_id": "+8801401155116",
-        //                "sender_name": "Stay home",
-        //                "sender_image": "/storage/images/profile/Orko-Pro-Dev_2022_11_14_00_50_30-Nov-14th-22-12-50-39.jpg",
-        //                "create_at": Date().currentTimeFormat,
-        //                "created_date": Date().currentDateFormat,
-        //                "is_group": false,
-        //                "is_delivered": false,
-        //                "is_seen": false
-        //            ]
-        //
-        //            print(messageDict)
-        //            socket.emit("chat_message", messageDict)
-        
-        //sendMessage(messageText, in: chats[0])
-        socketManager.sendMessage(message: messageText)
         messageText = ""
     }
+    
+    func getMessage(chat : Chat) {
+        socketManager.getSocketInstance().on("get_message") { data, _ in
+           
+            print("message--------------print--1")
+            
+          //  let message: MessageData = try JSONDecoder().decode(MessageData.self, from: data[0])
+
+           // receivedMessage(text: "helll", in: chat)
+            
+            print(data)
+                      if let chats = data[0] as? [String: Any], let message = MessageData(dictionary: chats) {
+                          print("message--------------print1- -2")
+                          print(message)
+                         // self.receivedMessage(message.msg, in: chat)
+                          
+//                          DispatchQueue.main.async {
+//                              //self.messages.append(message)
+//
+//                              print("message---print")
+//                              print(message)
+//
+//                              self.receivedMessage(message.msg, in: chat)
+//
+//                          }
+                      }
+                  }
+    }
+    
     
     func sentSocketMessage(msg: String) {
         socketManager.sendMessage(message: msg)
@@ -132,6 +136,7 @@ class ChatsViewModel: ObservableObject {
         }
     }
     
+    
     func sendMessage(_ text:String, in chat: Chat) -> Message? {
         if let index = chats.firstIndex(where: { $0.id == chat.id }){
             let message = Message(text, type: .Sent)
@@ -143,11 +148,17 @@ class ChatsViewModel: ObservableObject {
         return nil
     }
     
-    
-    
-    
-    
-    
+    func receivedMessage(_ text:String, in chat: Chat) -> Message? {
+        
+        if let index = chats.firstIndex(where: { $0.id == chat.id }){
+            let message = Message(text, type: .Received)
+            chats[index].messages.append(message)
+            
+            return message
+            
+        }
+        return nil
+    }
     
 }
 
@@ -166,5 +177,81 @@ struct ChatMessage: Identifiable {
         self.id = UUID()
         self.username = username
         self.text = text
+    }
+}
+
+
+struct MessageData: Identifiable {
+    
+    let chatId : UUID
+    
+    let id: Int
+    let type: String
+    
+    let messageId: String
+    let userId: String
+    let senderId: Int
+    let group_id: Int
+    let room: String
+    let senderName: String
+    let senderImg: String
+    let sender_description: String
+    let sender_degree: String
+    
+    let is_doctor: Int
+    let msg: String
+    let created_date: String
+    let created_at: String
+    let chat_type: String
+    let deliver_status: Int
+    let is_deleted: Bool
+    let additional_note: String
+    
+    
+    init?(dictionary: [String: Any]) {
+        guard let id = dictionary["id"] as? Int,
+            let type = dictionary["type"] as? String,
+            let messageId = dictionary["message_id"] as? String,
+            let userId = dictionary["user_id"] as? String,
+            let senderId = dictionary["sender_id"] as? Int,
+            let groupId = dictionary["group_id"] as? Int,
+            let room = dictionary["room"] as? String,
+            let senderName = dictionary["sender_name"] as? String,
+            let senderImg = dictionary["sender_image"] as? String,
+            let senderDes = dictionary["sender_description"] as? String,
+            let senderDegree = dictionary["sender_degree"] as? String,
+            let isDoctor = dictionary["is_doctor"] as? Int,
+            let created_date = dictionary["created_date"] as? String,
+            let created_at = dictionary["created_at"] as? String,
+            let chat_type = dictionary["chat_type"] as? String,
+            let deliveryStatus = dictionary["deliver_status"] as? Int,
+            let is_deleted = dictionary["is_deleted"] as? Bool,
+            let additional_note = dictionary["additional_note"] as? String,
+            
+                let msg = dictionary["msg"] as? String else {
+                return nil
+        }
+
+        self.chatId = UUID()
+        self.id = id
+        self.msg = msg
+        self.type = type
+        self.messageId = messageId
+        self.userId = userId
+        self.senderId = senderId
+        self.group_id = groupId
+        self.room = room
+        self.senderName = senderName
+        self.senderImg = senderImg
+        self.sender_degree = senderDegree
+        self.sender_description = senderDes
+        self.is_doctor = isDoctor
+        self.created_date = created_date
+        self.created_at = created_at
+        self.chat_type = chat_type
+        self.deliver_status = deliveryStatus
+        self.is_deleted = is_deleted
+        self.additional_note = additional_note
+        
     }
 }

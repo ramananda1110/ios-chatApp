@@ -10,8 +10,7 @@ import SwiftUI
 struct ChatView: View {
     
     @EnvironmentObject var viewModel : ChatsViewModel
-    //@StateObject var viewModel = ChatViewModel
-
+   
     @State  private var messageIDToScroll: UUID?
     
     let chat : Chat
@@ -20,7 +19,6 @@ struct ChatView: View {
     @FocusState private var isFocused
     
  
-    
     var body: some View {
         
         VStack(spacing: 0) {
@@ -39,6 +37,8 @@ struct ChatView: View {
                                     scrollTo(messageId: messageID, shouldAnimate: true, scrollReader: scrollReader)
 
                                 }
+                                
+                                viewModel.getMessage(chat: chat)
                             }
 
                     }
@@ -56,6 +56,7 @@ struct ChatView: View {
                 viewModel.markAsUnread(false, chat: chat)
             }
     }
+    
     
     
     var navBarLeadingImgBtn : some View {
@@ -106,7 +107,10 @@ struct ChatView: View {
     
     func sendMessage() {
         
-        //viewModel.sendMessage()
+
+        if text.isEmpty {
+            return
+        }
         
         if let message = viewModel.sendMessage(text, in: chat){
             //text = ""
@@ -118,6 +122,7 @@ struct ChatView: View {
         
         text = ""
        
+        
     }
     
     
@@ -177,7 +182,7 @@ struct ChatView: View {
                 .padding(.vertical, 5)
                 .background(Capsule().foregroundColor(.blue))
         }.padding(.vertical, 5)
-            .frame(width: .infinity)
+            .frame(width: 200)
     }
     
 }
@@ -189,5 +194,14 @@ struct ChatView_Previews: PreviewProvider {
             
             ChatView(chat: Chat.sampleChat[0])
         }
+    }
+}
+
+
+
+extension View {
+    func dump() -> Self {
+        print(Mirror(reflecting: self))
+        return self
     }
 }

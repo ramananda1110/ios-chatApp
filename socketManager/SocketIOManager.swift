@@ -7,6 +7,7 @@
 
 import Foundation
 
+import SocketIO
 
 protocol SocketIOManager {
     
@@ -18,4 +19,5 @@ protocol SocketIOManager {
     func sendMessage(message: String)
     func observeMessages(completionHandler: @escaping ([String: Any]) -> Void)
     
+    func getSocketInstance() -> SocketIOClient
 }

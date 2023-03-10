@@ -31,7 +31,7 @@ class SocketIOManagerDefault : NSObject, SocketIOManager {
          socket = manager.defaultSocket
          
          
-         establishConnection()
+//         establishConnection()
      }
      
      //MARK: - Instance Methods

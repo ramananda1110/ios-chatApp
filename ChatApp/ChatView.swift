@@ -38,7 +38,7 @@ struct ChatView: View {
 
                                 }
                                 
-                                viewModel.getMessage(chat: chat)
+                                //viewModel.getMessage(chat: chat)
                             }
 
                     }
@@ -194,14 +194,5 @@ struct ChatView_Previews: PreviewProvider {
             
             ChatView(chat: Chat.sampleChat[0])
         }
-    }
-}
-
-
-
-extension View {
-    func dump() -> Self {
-        print(Mirror(reflecting: self))
-        return self
     }
 }

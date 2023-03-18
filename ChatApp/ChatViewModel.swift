@@ -10,25 +10,26 @@ import SocketIO
 
 class ChatsViewModel: ObservableObject {
     
-    @Published var chats = Chat.sampleChat
+    @Published private(set) var chats = Chat.sampleChat
     
     private var socketManager = Managers.socketManager
 
-
-    @Published var messageText = ""
-    @Published var messages = [MessageData]()
+    @Published var messages : String = ""
+   
+    //@Published var messages = [MessageData]()
 
 
     
-    init(chats: [Chat] = Chat.sampleChat, socketManager: SocketIOManager = Managers.socketManager, messageText: String = "", messages: [MessageData] = [MessageData]()) {
-        self.chats = chats
-        self.socketManager = socketManager
-        self.messageText = messageText
-        self.messages = messages
+    init() {
+       
+      //   self.messageText = messageText
+     //    self.messages = messages
         
         socketManager.establishConnection()
         
-        getMessage(chats: chats[0])
+       // getMessage()
+        
+        setupConnect()
     }
     
     
@@ -45,12 +46,12 @@ class ChatsViewModel: ObservableObject {
    
    
     
-    func sendMessage() {
+    func sendMessage(message: String) {
         
         let messageDict: [String: Any] = [
                         "api_token": "L4KX8hcEmXNTK3vIi1I4fQZR8HGlOTbtgAwCf1UDElsHmj3KyPyqA2ssFn1C",
                         "room": "orko6-13",
-                        "msg": messageText,
+                        "msg": message,
                         "doctor_id": "13",
                         "chat_type": "text",
                         "user_id": "+8801738039685",
@@ -67,31 +68,50 @@ class ChatsViewModel: ObservableObject {
         socketManager.getSocketInstance().emit("chat_message", messageDict)
                     print(messageDict)
         
-        self.messageText = ""
+        
     }
     
-    func getMessage(chats: Chat) {
+    func getMessage() {
         socketManager.getSocketInstance().on("get_message") { data, _ in
-            
-            print("message--------------print--1")
-            
-            //  let message: MessageData = try JSONDecoder().decode(MessageData.self, from: data[0])
-            
-            // receivedMessage(text: "helll", in: chat)
             
             do {
                 let dat = try JSONSerialization.data(withJSONObject:data[0])
-                let res = try JSONDecoder().decode(MessageData2.self,from:dat)
+                let res = try JSONDecoder().decode(MessageData.self,from:dat)
                 
-                self.receivedMessage(res.msg, in: chats)
                 print("message--------------final ")
+                
+                self.messages = res.msg
                
-                print(res)
+               // receivedMessage(res.msg, in: chat)
+               
+                print(res.msg)
             }
             catch {
                 print(error)
             }
         }
+    }
+    
+    func setupConnect() {
+        
+        socketManager.getSocketInstance().on("get_message") { (data, ack) in
+                   guard let dataInfo = data.first else { return }
+                   if let response: MessageData = try? SocketParser.convert(data: dataInfo) {
+                       print("Message from '\(response.user_id)': \(response.msg)")
+                       
+                              
+                      
+                       DispatchQueue.main.async {
+                           //self.messages.append(response.msg)
+                           
+                           let message = Message(response.msg, type: .Received)
+                           self.chats[0].messages.append(message)
+                           
+                       }
+                    //   receivedMessage(response.msg, in: chats[0])
+                   }
+               }
+
     }
 
 
@@ -194,7 +214,7 @@ struct ChatMessage: Identifiable {
     }
 }
 
-struct MessageData2: Codable {
+struct MessageData: Codable {
     
    // let chatId : UUID
     
@@ -225,7 +245,7 @@ struct MessageData2: Codable {
 }
 
 
-struct MessageData: Identifiable {
+struct MessageData22: Identifiable {
     
    // let chatId : UUID
     

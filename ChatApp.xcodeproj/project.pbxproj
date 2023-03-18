@@ -28,6 +28,7 @@
 		71CBAEFB29AE0C1E002C490F /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 71CBAEFA29AE0C1E002C490F /* SocketIO */; };
 		71CBAEFD29AE1BA5002C490F /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CBAEFC29AE1BA5002C490F /* SocketHelper.swift */; };
 		71CBAEFF29AE1C73002C490F /* AppUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CBAEFE29AE1C72002C490F /* AppUrl.swift */; };
+		71FE557B29BE3F45000B54CC /* SocketParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE557A29BE3F45000B54CC /* SocketParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		715536BF29AA219A00FFC677 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		71CBAEFC29AE1BA5002C490F /* SocketHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
 		71CBAEFE29AE1C72002C490F /* AppUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUrl.swift; sourceTree = "<group>"; };
+		71FE557A29BE3F45000B54CC /* SocketParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				7153AC1E29B445F80022E1A9 /* SocketIOManagerDefault.swift */,
 				7153AC2029B4461E0022E1A9 /* SocketIOManager.swift */,
 				7153AC2229B447430022E1A9 /* Managers.swift */,
+				71FE557A29BE3F45000B54CC /* SocketParser.swift */,
 			);
 			path = socketManager;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				7153AC1F29B445F80022E1A9 /* SocketIOManagerDefault.swift in Sources */,
 				7155368D29A9F9A400FFC677 /* ChatApp.xcdatamodeld in Sources */,
 				7155368829A9F9A400FFC677 /* ChatAppApp.swift in Sources */,
+				71FE557B29BE3F45000B54CC /* SocketParser.swift in Sources */,
 				715536BE29AA1EAF00FFC677 /* ChatViewModel.swift in Sources */,
 				7155368F29A9F9A400FFC677 /* ContentView.swift in Sources */,
 				71CBAEFF29AE1C73002C490F /* AppUrl.swift in Sources */,

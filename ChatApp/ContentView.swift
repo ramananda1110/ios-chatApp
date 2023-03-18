@@ -10,8 +10,8 @@ import CoreData
 
 struct ContentView: View {
     
-   // let chats = Chat.sampleChat
     @State private var query = ""
+    
     
     @StateObject var viewModel = ChatsViewModel()
     

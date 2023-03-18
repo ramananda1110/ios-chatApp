@@ -27,11 +27,10 @@ class SocketIOManagerDefault : NSObject, SocketIOManager {
        
         manager  = SocketManager(socketURL:  URL(string:AppUrl.socketURL)!, config: [.log(true), .forceNew(true), .reconnectAttempts(10), .reconnectWait(6000), .connectParams(["userId" : "+8801738039685", "userToken" : "ecwe-kffR9K0PCe70rvDDo:APA91bG8W6XrWUw_rUi3JbWYtzt9F236oFuOq4nXJBVGHKIVybmoDJKZbYgJ3RO_i-BDY8L6aAzoEzaOX_20diEOENn3SFZCRQOI6tTWw3cAW59FXs3vcrshn1wOIali6dCkPk7duhK0"]), .forceWebsockets(true), .compress])
          
-         //manager = SocketManager(socketURL: URL(string: "http://10.17.33.93:3000")!)
          socket = manager.defaultSocket
          
          
-//         establishConnection()
+
      }
      
      //MARK: - Instance Methods
@@ -97,6 +96,7 @@ class SocketIOManagerDefault : NSObject, SocketIOManager {
         print(messageDict)
         socket.emit("chat_message", messageDict)
     }
+    
     
     
     

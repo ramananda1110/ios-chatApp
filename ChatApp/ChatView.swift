@@ -10,7 +10,7 @@ import SwiftUI
 struct ChatView: View {
     
     @EnvironmentObject var viewModel : ChatsViewModel
-   
+  
     @State  private var messageIDToScroll: UUID?
     
     let chat : Chat
@@ -18,14 +18,16 @@ struct ChatView: View {
     @State private var text = ""
     @FocusState private var isFocused
     
- 
+    
+   
     var body: some View {
         
+       
         VStack(spacing: 0) {
             GeometryReader {
                 reader in ScrollView {
                     ScrollViewReader {
-                        scrollReader in   getMessageView(viewWidth: reader.size.width)
+                        scrollReader in  getMessageView(viewWidth: reader.size.width)
                             .padding(.horizontal)
                             .onChange(of: messageIDToScroll) {
                                 _ in if let messageID = messageIDToScroll {
@@ -35,16 +37,20 @@ struct ChatView: View {
                             .onAppear{
                                 if let messageID = chat.messages.last?.id {
                                     scrollTo(messageId: messageID, shouldAnimate: true, scrollReader: scrollReader)
-
+                                    
                                 }
                                 
-                                //viewModel.getMessage(chat: chat)
+                                
+                                
+                                //                                viewModel.receivedMessage(viewModel.messages, in: chat)
+                                //
+                                
                             }
-
+                        
                     }
                 }
             }
-//            .background(Color.yellow)
+            //            .background(Color.yellow)
             .padding(.bottom, 5)
             
             toolbarView()
@@ -97,7 +103,7 @@ struct ChatView: View {
                 Button(action: sendMessage){
                     Image(systemName: "paperplane.fill").foregroundColor(.white)
                         .frame(width: height, height: height)
-                        .background(Circle().foregroundColor(viewModel.messageText.isEmpty ? .gray : .blue))
+                        .background(Circle().foregroundColor(text.isEmpty ? .gray : .blue))
                 }
                 .disabled(text.isEmpty)
             }.frame(height: height)
@@ -148,12 +154,12 @@ struct ChatView: View {
                 
                 Section(header: sectionHeader(firstMessage: messages.first!)) {
                     
-                    ForEach(messages) {message in
-                        let isReceived = message.type == .Received
+                    ForEach(messages) {msg in
+                        let isReceived = msg.type == .Received
                         
                         HStack {
                             ZStack {
-                                Text(message.text)
+                                Text(msg.text)
                                     .padding(.horizontal)
                                     .padding(.vertical, 12)
                                     .background( isReceived ? Color.black.opacity(0.2) : .green.opacity(0.9))
